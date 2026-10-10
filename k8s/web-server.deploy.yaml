@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-server
+  name: web-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-server
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+      - image: amrctl/docker-task:0.1
+        name: docker-task
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "64Mi"
+          limits:
+            cpu: "500m"
+            memory: "128Mi"
+
+      
+status: {}
